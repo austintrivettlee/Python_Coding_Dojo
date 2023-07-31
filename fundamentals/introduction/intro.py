@@ -97,4 +97,72 @@ print(bool_true)
 
 # List Creation
 
-colors = ["purple", "cornflour yellow", "golden rod", "firebrick", "dark orchid"]
+colors = ["Purple", "Cornflour Yellow", "Golden Rod", "Fire Brick", "Dark Orchid"]
+
+print(colors[1])
+print(colors[2])
+print(colors[-1])
+print(colors[-2])
+
+# length
+
+print(len(colors))
+
+for i in range(len(colors)):
+    print(colors[i])
+
+# append
+
+colors.append("Hot Pink")
+print(colors)
+
+colors.remove("Golden Rod")
+print(colors)
+
+colors.pop(1)
+print(colors)
+
+colors[0] = "Pink"
+print(colors)
+
+nums = [5, 77, 26, 87, 34, 23]
+words = ["pig", "dog", "cat", "horse", "tiger"]
+nums.sort()
+print(nums)
+nums.reverse()
+print(nums)
+words.sort()
+print(words)
+words.reverse()
+print(words)
+
+
+# diction
+
+strat = {
+    "brand": "fender",
+    "model": "Stratocaster",
+    "year": 1977,
+    "color": "blue",
+    "is_new": False
+}
+print(strat)
+
+print(strat["year"])
+
+strat["year"] = 1922
+print(strat)
+print(strat.get("model"))
+
+print(strat.get("owner"))
+
+print(strat.keys())
+print(strat.values())
+print(strat.items())
+
+if 'owner' in strat:
+    print("owner in strat")
+else:
+    print("owner is not in strat")
+
+
