@@ -1,13 +1,17 @@
 {
     "editor.defaultFormatter": "ms-python.black-formatter",
-    "python.formatting.provider": "black",
+    "python.formatting.provider": "none",
     "python.formatting.blackArgs": [
         "--line-length",
         "88"
     ],
     "[python]": {
+        "editor.formatOnSave": true,
         "editor.codeActionsOnSave": {
             "source.organizeImports": true
-        }
-    }
+        },
+        "editor.defaultFormatter": "ms-python.black-formatter"
+    },
+    "terminal.integrated.fontFamily": "Red Hat Mono",
+    "terminal.integrated.fontSize": 13,
 }
