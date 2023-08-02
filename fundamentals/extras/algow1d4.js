@@ -1,33 +1,3 @@
-/* 
-Book Index
-
-Given an array of ints representing page numbers
-return a string with the page numbers formatted as page ranges when the nums
-span a consecutive range.
-*/
-/*
-
-check if nums[i + 1] == num[i] + 1 !checks consecutive!
-Put consecs into empty array, pull out arr[0] and arr[arr.length],
-    var consecStr = ""
-    consecStr =+ arr[0]
-    consecStr =+ "-"
-    consecStr =+ arr[arr.length]
-    
-
-
-*/
-
-/**
- * Turns the given arr of page numbers into a string of comma hyphenated
- * page ranges.
- * - Time: O(?).
- * - Space: O(?).
- * @param {Array<number>} nums Page numbers.
- * @returns {string} The given page numbers as comma separated hyphenated
- *    page ranges.
- */
-
 const nums1 = [1, 13, 14, 15, 37, 38, 70];
 const expected1 = "1, 13-15, 37-38, 70";
 
