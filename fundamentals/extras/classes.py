@@ -1,5 +1,8 @@
 # Class names are singular nouns an in PascalCase
 class Guitar:
+
+    num_of_guitars = 0
+
     # constructor function (dunder init)
     def __init__(self, brand, model, num_strings):
         self.brand = brand
@@ -7,10 +10,17 @@ class Guitar:
         self.num_strings: int = num_strings
         self.is_Playing = False
 
-
     def __str__(self): 
         return f"<Guitar: {self.brand}, Brand: {self.model}, Playing: {self.is_Playing}>"
     
+    @classmethod
+    def increase_num_of_guitars(cls):
+        Guitar.num_of_guitars += 1
+
+    @staticmethod
+    def display_standard_tuning():
+        print(E, A, G)
+
     # Instance methods always take self as the first parameter
     def play(self):
         self.is_Playing = True
@@ -26,6 +36,8 @@ class Guitar:
         self.num_strings = new_num_strings
         print (f"Changed to {self.num_strings} strings.")
         return self.num_strings
+    
+
 
 # Instantiating an object of type Guitar
 
