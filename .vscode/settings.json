@@ -14,4 +14,7 @@
     },
     "terminal.integrated.fontFamily": "Red Hat Mono",
     "terminal.integrated.fontSize": 13,
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
 }
