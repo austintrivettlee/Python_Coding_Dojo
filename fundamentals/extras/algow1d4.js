@@ -18,8 +18,7 @@ function bookIndex(nums) {
     // Checks if nums starts with a consec, if not pushes to joined str
     if (nums[i] == nums[nums.length-1]){
         joinedStr += nums[i];
-    }
-        else if (nums[i] - 1 == nums[i - 1] && nums[i] + 1 != nums[i + 1]) {
+    } else if (nums[i] - 1 == nums[i - 1] && nums[i] + 1 != nums[i + 1]) {
         tempArr.push(nums[i]);
         consecStr += tempArr[0];
         consecStr += separator2;
@@ -28,13 +27,13 @@ function bookIndex(nums) {
         joinedStr += separator1
         consecStr = ""
         tempArr = []
-      } else if (nums[i + 1] == nums[i] + 1) {
+    } else if (nums[i + 1] == nums[i] + 1) {
         tempArr.push(nums[i]);
-      } else {
+    } else {
         joinedStr += nums[i];
         joinedStr += separator1;
-      }
     }
+  }
     return joinedStr
 }
 
@@ -43,3 +42,5 @@ function bookIndex(nums) {
 console.log(bookIndex(nums1));
 console.log(bookIndex(nums2));
 console.log(bookIndex(nums3));
+
+
