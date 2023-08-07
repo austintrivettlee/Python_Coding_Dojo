@@ -1,14 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+        * {
+            margin: 0 auto;
+            padding: 0 auto;
+        }
+
+        h1 {
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .con {
+            display: flex;
+            justify-content: center;
+            width: 60%;
+            gap: 15px;
+        }
+
+        p {
+            text-align: center;
+            margin: 20px;
+            font-weight: bolder;
+        }
+
+        button {
+            width: 150px;
+            height: 30px;
+            border-radius: 5px;
+        }
+
+        .plus {
+            background-color: lightgreen;
+        }
+
+        .minus {
+            background-color: crimson;
+        }
+
+        .plustwo {
+            background-color: lightblue;
+        }
+
+        input {
+            width: 150px;
+            height: 25px;
+            border-radius: 5px;
+        }
+
+        .custom {
+            text-align: center;
+            margin: 60px;
+        }
+    </style>
     <title>Counter</title>
-  </head>
-  <body>
+</head>
+
+<body>
     <h1>Counter</h1>
-    <h2>{{currentnum}} times</h2>
-    <button>Click</button>
-    <button>Reset</button>
-  </body>
+    <p>{{num}}</p>
+    </form>
+    <div class="con">
+        <form action="/">
+            <button type="submit" class="plus">Click</button>
+        </form>
+        <form action="/addtwo">
+            <button type="submit" class="plustwo">Add Two</button>
+        </form>
+        <form action="/destroy_session">
+            <button type="submit" class="minus">Reset</button>
+        </form>
+    </div>
+    <form action="/custom" method="post" class="custom">
+        <input type="text" name="customnum" placeholder="put in custom increment">
+        <button type="submit">Custom</button>
+    </form>
+
+    <p>You have visited out website {{counter}} time(s)</p>
+</body>
+
 </html>
