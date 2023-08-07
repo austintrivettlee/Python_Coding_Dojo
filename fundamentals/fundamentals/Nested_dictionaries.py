@@ -22,26 +22,26 @@
 # z[0]["y"] = 30
 # print(z)
 
-# ---------TWO---------
-# students = [
-#         {'first_name' : 'Michael', 'last_name' : 'Jordan'},
-#         {'first_name' : 'John', 'last_name' : 'Rosales'},
-#         {'first_name' : 'Mark', 'last_name' : 'Guillen'},
-#         {'first_name' : 'KB', 'last_name' : 'Tonel'}
-#     ]
+---------TWO---------
+students = [
+        {'first_name' : 'Michael', 'last_name' : 'Jordan'},
+        {'first_name' : 'John', 'last_name' : 'Rosales'},
+        {'first_name' : 'Mark', 'last_name' : 'Guillen'},
+        {'first_name' : 'KB', 'last_name' : 'Tonel'}
+    ]
 
-# def iterateDictionary(students):
-#     for each_key in students:
-#         print(each_key)
+def iterateDictionary(students):
+    for each_key in students:
+        print(each_key)
 
-# def iterateDictionary2(key, students):
-#     for i in range(len(students)):
-#         print(students[i][key])
-# # should output: (it's okay if each key-value pair ends up on 2 separate lines;
-# # bonus to get them to appear exactly as below!)
-# iterateDictionary(students)
-# iterateDictionary2('first_name', students)
-# iterateDictionary2('last_name', students)
+def iterateDictionary2(key, students):
+    for i in range(len(students)):
+        print(students[i][key])
+# should output: (it's okay if each key-value pair ends up on 2 separate lines;
+# bonus to get them to appear exactly as below!)
+iterateDictionary(students)
+iterateDictionary2('first_name', students)
+iterateDictionary2('last_name', students)
 
 # -----------THREE-----------
 dojo = {
