@@ -29,8 +29,6 @@ def reset():
     session['num'] = 0
     return redirect('/')
 
-@app.route
-
 
 if __name__ == "__main__":
     app.run(debug=True)
