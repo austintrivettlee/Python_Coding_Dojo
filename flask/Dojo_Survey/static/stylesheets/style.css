@@ -1,0 +1,73 @@
+* {
+    margin: 0 auto;
+    padding: 0 auto;
+    box-sizing: border-box;
+}
+.container {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    background-color: darkslateblue;
+    width: 20%;
+    border-radius: 3px;
+}
+.form form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 20px 0;
+}
+.results {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 20px 0;
+}
+h1 {
+    color: orange;
+    margin-top: 15px;
+}
+label {
+    color: white;
+}
+textarea {
+    max-width: 300px;
+    max-height: 200px;
+    min-width: 300px;
+    min-height: 200px;
+    border-radius: 5px;
+    padding-top: 5px;
+}
+select {
+    width: 300px;
+    height: 30px;
+    border-radius: 5px;
+}
+.input {
+    width: 300px;
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+}
+button {
+    width: 200px;
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+}
+p {
+    color: greenyellow;
+    text-align: center;
+    white-space: wrap;
+    max-width: 300px;
+    word-break: break-all;
+    white-space: normal;
+}
+.favlang {
+    display: flex;
+    gap: 10px
+}
+.dojolocation {
+    display: flex;
+    gap: 10px
+}

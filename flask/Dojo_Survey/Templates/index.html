@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='stylesheets/style.css') }}"/>
+    <title>Dojo Survey</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Dojo Survey</h1>
+
+        <div class="form">
+            <form action="/results" method="post">
+                <label for="usersname">Name:</label>
+                <input type="text" name="full_name" class="input">
+                <label for="location">Dojo Location:</label>
+                <div class="dojolocation">
+                    <input type="checkbox" name="location" value="Chicago">
+                    <label for="">Chicago</label>
+                    <input type="checkbox" name="location" value="Seattle">
+                    <label for="">Seattle</label>
+                    <input type="checkbox" name="location" value="Online">
+                    <label for="">Online</label>
+                </div>
+                <label for="favlang">Favorite Language</label>
+                <div class="favlang">
+                <input type="radio" name="favlang" value="HTML">
+                <label for="html">HTML</label><br>
+                <input type="radio" name="favlang" value="CSS">
+                <label for="css">CSS</label><br>
+                <input type="radio" name="fav_language" value="JavaScript">
+                <label for="javascript">JavaScript</label>
+                </div>
+                <label for="usercomments">Comments:</label>
+                <textarea name="comments" id="" cols="30" rows="10"></textarea>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

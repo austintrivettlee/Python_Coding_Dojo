@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='stylesheets/style.css') }}"/>
+    <title>Dojo Survey</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Dojo Survey</h1>
+
+        <div class="results">
+                <label for="usersname">Name:</label>
+                <p>{{ session['name'] }}</p>
+                <label for="location">Dojo Location:</label>
+                {% for value in range(0,3)%}
+                <p>{{ session['location'][value] }}</p>
+                {%endfor%}
+                <label for="favlang">Favorite Language</label>
+                <p>{{ session['favlang'] }}</p>
+                <label for="usercomments">Comments:</label>
+                <p>{{ session['comments'] }}</p>
+        </div>
+    </div>
+</body>
+</html>
