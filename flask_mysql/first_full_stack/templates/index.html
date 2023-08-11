@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+    crossorigin="anonymous"
+  />
+    <title>Friends</title>
+  </head>
+  <body>
+    <a href="/friends/new" class="btn btn-primary">Create New Friend</a>
+    <h1>All My Friends</h1>
+    {% for friend in friends %}
+    <p>
+      <a href="/friends/{{friend.id}}">First Name: {{ friend.first_name }}</a>
+    </p>
+    <p>Last Name: {{ friend.last_name }}</p>
+    <p>Occupation: {{ friend.occupation }}</p>
+    <div class="d-flex flex-2">
+      <a class="btn btn-warning" href="/friends/{{ friend.id }}/edit"
+        >Edit Friend</a
+      >
+      <form action="/friends/{{friend.id}}/delete">
+        <button type="submit" class="btn btn-danger">Delete Friend</button>
+      </form>
+    </div>
+    <hr />
+    {% endfor %}
+  </body>
+</html>

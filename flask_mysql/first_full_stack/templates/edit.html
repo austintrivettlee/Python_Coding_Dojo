@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+      crossorigin="anonymous"
+    />
+    <title>Friends</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="card mt-5 shadow">
+        <div class="card-body">
+          {# the action attribute defines the route that processes the form! #}
+          <form action="/friends/{{ friend.id }}/update" method="post">
+            <input type="hidden" name="friend_id" value="{{ friend.id }}">
+            <div class="mb-3">
+              <label for="">First Name:</label>
+              <input
+                type="text"
+                name="first_name"
+                id="first_name"
+                class="form-control"
+                value="{{ friend.first_name }}"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="">Last Name:</label>
+              <input
+                type="text"
+                name="last_name"
+                id="last_name"
+                class="form-control"
+                value="{{ friend.last_name }}"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="">Occupation:</label>
+              <input
+                type="text"
+                name="occupation"
+                id="occupation"
+                class="form-control"
+                value="{{ friend.occupation }}"
+              />
+            </div>
+            <div class="text-end">
+              <button type="submit" class="btn btn-primary">Update Friend</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
