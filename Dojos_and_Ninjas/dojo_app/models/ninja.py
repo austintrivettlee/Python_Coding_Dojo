@@ -11,7 +11,6 @@ class Ninja:
         self.age = data['age']
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
-        self.dojo_id = data['dojo_id']
         
     def __repr__(self):
         return f"<Name: {self.first_name} {self.last_name} || Age: {self.age} || Dojo: {self.dojo_id}>"

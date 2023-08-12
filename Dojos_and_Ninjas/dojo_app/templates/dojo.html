@@ -31,29 +31,23 @@
     </nav>
 
     <div class="container w-75 d-flex gap-2 mt-2">
-        <div class="left card w-75 h-100">
-            <div class="card-header"> New Dojo</div>
-            <div class="card-body m-auto h-auto">
-                <form action="/dojos/create" class="row m-auto p-2" method="post">
-                    <div class="col-auto">
-                        <label for="dojo" class="visually-hidden">Name</label>
-                        <input type="text" name="name" id="name" placeholder="New Dojo Name"
-                            class="form-control-plaintext">
-                    </div>
-                    <div class="col-auto">
-                        <button type="submit" class="btn btn-primary">Create New Dojo</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-        <div class="right card w-25">
-            <div class="card-header">Current Dojos</div>
+        <div class=" card w-100">
+            <div class="card-header">{{dojo.name}}</div>
             <div class="card-body text-center text-decoration-none">
-                <ul class="text-decoration-none list-unstyled">
-                    {% for dojo in dojos %}
-                    <li><a class="text-decoration-none" href="/dojos/{{dojo.id}}">{{dojo.name}}</a></li>
+                <table class="text-decoration-none list-unstyled table border">
+                    <tr class="border-2">
+                        <td>First_name</td>
+                        <td>Last_name</td>
+                        <td>Age</td>
+                    </tr>
+                    {% for ninja in dojo %}
+                    <tr>
+                        <td>{{ninja.first_name}}</td>
+                        <td>{{ninja.last_name}}</td>
+                        <td>{{ninja.age}}</td>
+                    </tr>
                     {% endfor %}
-                </ul>
+                </table>
             </div>
         </div>
     </div>

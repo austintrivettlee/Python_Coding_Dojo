@@ -1,5 +1,6 @@
 from dojo_app.config.mysqlconnection import connectToMySQL
 from pprint import pprint
+from dojo_app.models import ninja
 
 DATABASE = "dojos_and_ninjas_schema"
 
@@ -9,6 +10,7 @@ class Dojo:
         self.name = data['name']
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
+        self.ninjas = []
         
     @classmethod
     def get_all_dojos(cls):
@@ -32,7 +34,7 @@ class Dojo:
         data = {"id": id}
         
         results = connectToMySQL(DATABASE).query_db(query, data)
-        dojo = dojo(results[0])
+        dojo = Dojo(results[0])
         return dojo
     
     @classmethod
@@ -65,3 +67,27 @@ class Dojo:
         
         connectToMySQL(DATABASE).query_db(query, data)
         return
+    
+    @classmethod
+    def get_one_dojo_with_ninjas(cls, id):
+        query = """
+        SELECT * FROM dojos
+        LEFT JOIN ninjas ON ninjas.dojo_id = dojos.id
+        WHERE dojos.id = %(id)s;"""
+        
+        data = {
+            "id" : id
+        }
+        results = connectToMySQL(DATABASE).query_db(query, data)
+        dojo = cls(results[0])
+        for each_ninja in results:
+            ninja_data = {
+                "id" : each_ninja["ninjas.id"],
+                "first_name" : each_ninja["first_name"],
+                "last_name" : each_ninja["last_name"],
+                "age" : each_ninja["age"],
+                "created_at" : each_ninja["ninjas.created_at"],
+                "updated_at" : each_ninja["ninjas.updated_at"]
+            }
+            dojo.ninjas.append(ninja.Ninja(ninja_data))
+        return dojo.ninjas
