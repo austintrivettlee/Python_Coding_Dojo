@@ -38,8 +38,8 @@ class Dojo:
     @classmethod
     def create_dojo(cls, form_data):
         query = """
-        INSERT INTO users (first_name, last_name, age, dojo_id)
-        VALUES (%(first_name)s,%(last_name)s,%(age)s,%(dojo_id)s);
+        INSERT INTO dojos (name)
+        VALUES (%(name)s);
         """
         
         results = connectToMySQL(DATABASE).query_db(query, form_data)
@@ -48,8 +48,8 @@ class Dojo:
     @classmethod
     def edit_dojo(cls, form_data):
         query = """
-        UPDATE users
-        SET first_name = %(name)s
+        UPDATE dojos
+        SET name = %(name)s
         WHERE id = %(dojo_id)s;
         """
         

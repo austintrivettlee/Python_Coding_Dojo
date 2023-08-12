@@ -44,7 +44,7 @@ class Ninja:
     @classmethod
     def create_ninja(cls, form_data):
         query = """
-        INSERT INTO users (first_name, last_name, age, dojo_id)
+        INSERT INTO ninjas (first_name, last_name, age, dojo_id)
         VALUES (%(first_name)s,%(last_name)s,%(age)s,%(dojo_id)s);
         """
         
@@ -54,7 +54,7 @@ class Ninja:
     @classmethod
     def edit_ninja(cls, form_data):
         query = """
-        UPDATE users
+        UPDATE ninjas
         SET first_name = %(first_name)s, last_name = %(last_name)s, age = %(age)s, dojo_id = %(dojo_id)s
         WHERE id = %(ninja_id)s;
         """
