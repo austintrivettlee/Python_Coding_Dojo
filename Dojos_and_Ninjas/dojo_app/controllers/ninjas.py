@@ -7,4 +7,4 @@ def get_all_ninjas():
     ninjas = Ninja.get_all()
     return render_template('ninjas.html', ninjas=ninjas)
 
-@app.route('')
+# @app.route('')
