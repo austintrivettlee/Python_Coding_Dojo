@@ -36,12 +36,6 @@
             <div class="card-body m-auto h-auto">
                 <form action="/ninjas/create" class="row m-auto p-2 gap-2 d-flex" method="post">
                     <div class="col-auto d-flex flex-column">
-                        <select name="dojo" id="dojo" class="form-select mb-2">
-                            <option selected>Choose Dojo</option>
-                            {% for dojo in dojos %}
-                            <option value="dojo_id">{{dojo.name}}</option>
-                            {% endfor %}
-                        </select>
                         <label for="dojo" class="visually-hidden">Name</label>
                         <input required type="text" name="first_name" id="first_name" placeholder="Ninja First Name"
                             class="form-control mb-2">
@@ -49,8 +43,14 @@
                         <input required type="text" name="last_name" id="last_name" placeholder="Ninja Last Name"
                             class="form-control mb-2">
                         <label for="dojo" class="visually-hidden">Name</label>
-                        <input required type="text" name="age" id="age" placeholder="Ninja Age"
+                        <input required type="number" name="age" id="age" placeholder="Ninja Age"
                             class="form-control mb-2">
+                        <select name="dojo_id" id="dojo" class="form-select mb-2">
+                        <option selected>Choose Dojo</option>
+                        {% for dojo in dojos %}
+                        <option value="{{dojo.id}}">{{dojo.name}}</option>
+                        {% endfor %}
+                        </select>
                         <button type="submit" class="btn btn-primary">Create New Ninja</button>
                     </div>
                 </form>

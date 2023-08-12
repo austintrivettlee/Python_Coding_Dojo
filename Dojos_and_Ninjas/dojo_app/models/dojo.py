@@ -87,7 +87,8 @@ class Dojo:
                 "last_name" : each_ninja["last_name"],
                 "age" : each_ninja["age"],
                 "created_at" : each_ninja["ninjas.created_at"],
-                "updated_at" : each_ninja["ninjas.updated_at"]
+                "updated_at" : each_ninja["ninjas.updated_at"],
+                "dojo_id" : each_ninja["dojo_id"]
             }
             dojo.ninjas.append(ninja.Ninja(ninja_data))
         return dojo.ninjas

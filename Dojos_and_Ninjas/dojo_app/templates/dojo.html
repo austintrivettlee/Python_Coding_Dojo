@@ -32,12 +32,12 @@
 
     <div class="container w-75 d-flex gap-2 mt-2">
         <div class=" card w-100">
-            <div class="card-header">{{dojo.name}}</div>
-            <div class="card-body text-center text-decoration-none">
+            <div class="card-header h5">{{dojo_name.name}}</div>
+            <div class="card-body text-decoration-none">
                 <table class="text-decoration-none list-unstyled table border">
-                    <tr class="border-2">
-                        <td>First_name</td>
-                        <td>Last_name</td>
+                    <tr class="border-2 text-uppercase">
+                        <td>First name</td>
+                        <td>Last name</td>
                         <td>Age</td>
                     </tr>
                     {% for ninja in dojo %}
@@ -51,6 +51,7 @@
             </div>
         </div>
     </div>
+    <a href="/" class="btn btn-primary">Home</a>
 </body>
 
 </html>

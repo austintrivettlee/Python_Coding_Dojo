@@ -1,5 +1,6 @@
 from flask import render_template, redirect, request
 from dojo_app import app
+from pprint import pprint
 from dojo_app.models.ninja import Ninja
 from dojo_app.models.dojo import Dojo
 
@@ -16,5 +17,5 @@ def add_ninja():
 
 @app.post('/ninjas/create')
 def create_new_ninja():
-    Ninja.create_ninja(request.form)
-    return redirect('/dojos/')
+    dojo_id = Ninja.get_one_ninja(Ninja.create_ninja(request.form))
+    return redirect(f'/dojos/{dojo_id.dojo_id}')
