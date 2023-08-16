@@ -11,29 +11,35 @@
         <h1>Dojo Survey</h1>
 
         <div class="form">
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                     <p>{{message}}</p>
+                    {%endfor%}
+                {%endif%}
+            {%endwith%}
             <form action="/results" method="post">
-                <label for="usersname">Name:</label>
-                <input type="text" name="full_name" class="input">
+                <label for="name">Name:</label>
+                <input type="text" name="name" class="input" placeholder="Name">
                 <label for="location">Dojo Location:</label>
                 <div class="dojolocation">
-                    <input type="checkbox" name="location" value="Chicago">
-                    <label for="">Chicago</label>
-                    <input type="checkbox" name="location" value="Seattle">
-                    <label for="">Seattle</label>
-                    <input type="checkbox" name="location" value="Online">
-                    <label for="">Online</label>
+                    <select name="location" id="location" required>Select a Location
+                        <option name="location" id ="location1" value="Seattle">Seattle</option>
+                        <option name="location" id ="location2" value="Chicago">Chicago</option>
+                        <option name="location" id ="location3" value="Online">Online</option>
+                    </select>
                 </div>
-                <label for="favlang">Favorite Language</label>
+                <label for="language">Favorite Language</label>
                 <div class="favlang">
-                <input type="radio" name="favlang" value="HTML">
+                <input type="radio" name="language" id="language1" value="HTML" required>
                 <label for="html">HTML</label><br>
-                <input type="radio" name="favlang" value="CSS">
+                <input type="radio" name="language" id="language1" value="CSS" required>
                 <label for="css">CSS</label><br>
-                <input type="radio" name="fav_language" value="JavaScript">
+                <input type="radio" name="language" id="language1" value="JavaScript" required>
                 <label for="javascript">JavaScript</label>
                 </div>
                 <label for="usercomments">Comments:</label>
-                <textarea name="comments" id="" cols="30" rows="10"></textarea>
+                <textarea name="comment" id="comment" cols="30" rows="10" placeholder="comments here..."></textarea>
                 <button type="submit">Submit</button>
             </form>
         </div>

@@ -12,15 +12,13 @@
 
         <div class="results">
                 <label for="usersname">Name:</label>
-                <p>{{ session['name'] }}</p>
+                <p>{{ dojo.name }}</p>
                 <label for="location">Dojo Location:</label>
-                {% for value in range(0,3)%}
-                <p>{{ session['location'][value] }}</p>
-                {%endfor%}
-                <label for="favlang">Favorite Language</label>
-                <p>{{ session['favlang'] }}</p>
+                <p>{{ dojo.location }}</p>
+                <label for="favlang">Favorite Language:</label>
+                <p>{{ dojo.language }}</p>
                 <label for="usercomments">Comments:</label>
-                <p>{{ session['comments'] }}</p>
+                <p>{{ dojo.comment }}</p>
         </div>
     </div>
 </body>
