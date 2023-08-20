@@ -10,10 +10,17 @@
 </head>
 
 <body class="">
-    <Form class="row g-3 m-auto">
+    <Form class="row g-3 m-auto" action="/new" method="post">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <p>{{message}}</p>
+                {%endfor%}
+            {%endif%}
+        {%endwith%}
         <div class="col-auto">
             <Label class="col-form-label">Email</Label>
-            <input class="form-control mb-3" type="email" placeholder="email here pls">
+            <input class="form-control mb-3" type="text" name="email" id="email" placeholder="email here pls">
             <button class="btn btn-primary" type="submit">Sumbit</button>
         </div>
     </Form>
