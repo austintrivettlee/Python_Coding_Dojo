@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/style.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <title>StellaScope</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand bg-body-tertiary">
+        <div class="container-fluid gap-2">
+            <img class="img-thumbnail nav-img" src="{{ url_for('static', filename='scope.png') }}" alt="stellascope logo">
+            <a class="navbar-brand" href="#">StellaScope</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/">Home</a>
+                    </li>
+                </ul>
+            </div>
+            <form class="d-flex" action="/logout">
+                <button class="btn btn-outline-success" type="submit">Logout</button>
+            </form>
+        </div>
+    </nav>
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+            <p class="alert alert-danger w-75 m-auto my-3">{{message}}</p>
+        {%endfor%}
+    {%endif%}
+{%endwith%}
+
+    <div class="container d-flex gap-2 mt-2">
+        <div class="right card w-100">
+            <div class="card-header">New Comment</div>
+            <div class="card-body">
+                <form action="/create" class="form w-100" method="post">
+                    <input type="hidden" name="user_id" value="{{session['user_id']}}">
+                    <label for="description">Comment</label>
+                    <textarea name="description" id="description" cols="30" rows="10" maxlength="350" class="form-control mb-3"></textarea></textarea>
+                    <button type="submit" class="m-auto text-center btn btn-success">Post Comment</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
