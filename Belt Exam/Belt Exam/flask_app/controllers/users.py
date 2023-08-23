@@ -1,24 +1,20 @@
 from flask import render_template, redirect, request, session, flash
 from flask_app import app
 from flask_app.models.user import User
-from flask_app.controllers import comments
+from flask_app.models.car import Car
 from flask_bcrypt import Bcrypt
 bcrypt = Bcrypt(app)
 
 @app.route('/')
 def index():
-    if 'user_id' in session:
-        return redirect(f'/dashboard/{session["user_id"]}')
+    if session['user_id']:
+        return redirect('/dashboard')
     return render_template("index.html")
 
-@app.route('/register')
-def register():
-    return render_template("register.html")
-
-@app.post('/register_user')
+@app.post('/register')
 def register_user():
     if not User.is_valid_user(request.form):
-        return redirect('/register')
+        return redirect('/')
     pw_hash = bcrypt.generate_password_hash(request.form['password'])
     
     data = {
@@ -32,9 +28,7 @@ def register_user():
     
     session['user_id'] = user_id
     flash("Thanks for Registering!")
-    return redirect(f'/dashboard/{session["user_id"]}')
-
-
+    return redirect('/dashboard')
 
 @app.post('/login')
 def login():
@@ -55,7 +49,7 @@ def login():
     
     session['user_id'] = user_in_db.id
     
-    return redirect(f'/dashboard/{session["user_id"]}')
+    return redirect('/dashboard')
 
 @app.route('/logout')
 def logout():

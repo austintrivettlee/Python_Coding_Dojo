@@ -40,14 +40,18 @@
 {%endwith%}
     <div class="container gap-2 mt-2">
         <div class="right card w-100">
-            <div class="card-header">Dashboard - Hello Welcome to StellaScope - {{user.first_name}} {{user.last_name}}</div>
-            <div class="card-body text-center m-auto w-75">
-                <table class="table table-striped w-100 table-dark">
-
-                </table>
+            <div class="card-header d-flex justify-content-between">Dashboard - Hello Welcome to StellaScope <p>You are Logged in as {{user.first_name}} {{user.last_name}}</p></div>
+            <div class="card-body m-auto w-75">
+                    {%for each_comment in comments%}
+                        <div class="card-body card my-1 d-flex">
+                            <p>{{each_comment.comment}}</p>
+                            <p class="align-self-end text-muted">Posted By: {{each_comment.creator.first_name}} @ {{each_comment.created_at}}</p>
+                            <a href="/view/{{each_comment.id}}" class="align-self-end"><button type="button" class="btn btn-secondary">View Details</button></a>
+                        </div>
+                    {%endfor%}
             </div>
             <form action="/new">
-                <button type="submit" class="btn btn-primary m-auto d-block">Post Comment</button>
+                <button type="submit" class="btn btn-primary m-auto d-block my-3">Post Comment</button>
             </form>
         </div>
     </div>

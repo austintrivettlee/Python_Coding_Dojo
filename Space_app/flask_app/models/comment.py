@@ -11,8 +11,7 @@ class Comment:
         self.comment = data['comment']
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
-        self.user_id = data['user_id']
-        
+        self.creator_id = data['creator_id']
 
     @classmethod
     def get_all(cls):
@@ -34,9 +33,56 @@ class Comment:
         return results
     
     @staticmethod
-    def validate_comment(request.form):
+    def validate_comment(form):
         is_valid = True
-        if len(request.form['comment'] < 2):
+        if len(form['comment']) < 2:
             flash("Comment must be longer than 2 characters")
             is_valid = False
         return is_valid
+    
+    @classmethod
+    def get_all_with_creator(cls):
+        query = """
+        SELECT * FROM comments
+        JOIN users ON  users.id = creator_id
+        """
+        
+        results = connectToMySQL(DATABASE).query_db(query)
+        if results:
+            all_comments = []
+            for row in results:
+                one_comment = cls(row)
+                user_data = {
+                    **row,
+                    "id": row['id'],
+                    "first_name": row['first_name'],
+                    "last_name": row['last_name'],
+                    "created_at": row['created_at'],
+                    "updated_at": row['updated_at']
+                }
+                
+                one_comment.creator = user.User(user_data)
+                all_comments.append(one_comment)
+            return all_comments
+
+    @classmethod
+    def get_one_with_creator(cls, id):
+        query = """
+        SELECT * FROM comments
+        JOIN users ON  users.id = creator_id
+        WHERE id = %(id)s
+        """
+        results = connectToMySQL(DATABASE).query_db(query, id)
+        if results:
+            row = results[0]
+            one_comment = cls(row)
+            user_data ={
+                    **row,
+                    "id": row['user.id'],
+                    "first_name": row['user.first_name'],
+                    "last_name": row['user.last_name'],
+                    "created_at": row['user.created_at'],
+                    "updated_at": row['user.updated_at']
+                }
+            one_comment.creator = user.User(user_data)
+        return one_comment

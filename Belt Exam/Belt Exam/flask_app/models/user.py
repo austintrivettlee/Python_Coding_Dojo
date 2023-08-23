@@ -1,10 +1,10 @@
 from flask_app.config.mysqlconnection import connectToMySQL
+from flask_app.models import car
 from pprint import pprint
 from flask import flash
-from flask_app.models.comment import Comment
 import re
 EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
-DATABASE = "stellascope"
+DATABASE = "belt_exam_schema"
 
 class User:
     def __init__(self, data):
@@ -15,10 +15,8 @@ class User:
         self.password = data['password']
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
+        self.cars = []
     
-    def __str__(self) -> str:
-        print (f"{self.id} || {self.first_name} || {self.last_name} || {self.email} || {self.password}")
-        
     @classmethod
     def create(cls, form_data):
         query = """
@@ -91,27 +89,3 @@ class User:
             return False
         return cls(result[0])
     
-    @classmethod
-    def get_one_user_with_comments(cls, data):
-        query = """
-        SELECT * FROM users
-        LEFT JOIN comments ON users.id = creator_id
-        WHERE users.id = %(id)s;
-        """
-        
-        results = connectToMySQL(DATABASE).query_db(query, data)
-        if results:
-            one_user = cls(results[0])
-            one_user.comments_created = []
-            for row in results:
-                comment_data = {
-                    "id": row['comments.id'],
-                    "comment": row['comment'],
-                    "created_at": row['comments.created_at'],
-                    "updated_at": row['comments.updated_at'],
-                    "creator_id": row['comments.creator_id'],
-                    "creator_id": row['creator_id']
-                }
-                comment = Comment(comment_data)
-                one_user.comments_created.append(comment)
-        return one_user
